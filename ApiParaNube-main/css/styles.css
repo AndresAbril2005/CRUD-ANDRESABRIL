@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('https://wallpaperaccess.com/full/1959300.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background img {
+    width: 20%;
+    height: auto;
+    animation: moveBackground 20s linear infinite alternate;
+}
+
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 12px;
+    margin: 10px;
+    
+    border-radius: 5px;
+    outline: none;
+}
+
+button {
+    width: calc(100% - 22px);
+    padding: 12px;
+    background-color: #d9ab22;
+   
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    animation: moveLetters 0.5s infinite alternate;
+}
+
+button:hover {
+    background-color: #e4902a;
+}
+
+h2 {
+    font-size: 28px;
+    color: #333;
+    margin-top: 0;
+}

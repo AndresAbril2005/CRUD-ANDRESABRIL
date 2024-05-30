@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Animales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #logout, #deleteAcc {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .animal {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <div aria-orientation="horizontal">
+            <input type="button" value="Cerrar Sesion" id="logout">
+            <input type="button" value="Borrar Cuenta" id="deleteAcc">
+        </div>
+        <div>
+            <div id="confirmar_delete" style="display: none;">
+                <p>¿Está seguro de que desea eliminar su cuenta?</p>
+                <button id="bntBorrarCuenta">Sí, eliminar cuenta</button>
+                <button onclick="noBorrar()">Cancelar</button>
+            </div>
+        </div>
+    </header>
+    <main id="mainContent"></main>
+    <div class="container">
+        <div>
+          <label for="cedula">Cedula:</label>
+          <input type="text" id="cedula" disabled>
+        </div>
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" disabled>
+        </div>
+        <div>
+          <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+          <input type="date" id="fechaNacimiento" disabled>
+        </div>
+        <div>
+          <label for="direccion">Direccion:</label>
+          <input type="text" id="direccion" disabled>
+        </div>
+        <div>
+          <label for="telefono">Telefono:</label>
+          <input type="tel" id="telefono" disabled>
+        </div>
+      </div>
+      </div>
+      <div id="c-user"></div>
+      <div id="search-section"></div>
+
+    <div id="c"> <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar datos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        
+                        <div class="mb-3">
+                            <label for="name-text" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="name-text">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="cc-text" class="col-form-label">Cedula:</label>
+                            <input class="form-control" id="cc-text" type="number">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address-text" class="col-form-label">Direccion:</label>
+                            <input class="form-control" id="address-text" type="text">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone-text" class="col-form-label">Celular:</label>
+                            <input class="form-control" id="phone-text" type="tel">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email-text" class="col-form-label">Correo:</label>
+                            <input type="email" class="form-control" id="email-text">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="born-date-text" class="col-form-label">Fecha de nacimiento:</label>
+                            <input class="form-control" id="born-date-text" type="date">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="save-data-btn">Guardar Datos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnLogout = document.getElementById('logout');
+            btnLogout.addEventListener('click', () => {
+                window.location.href = '../index.html';
+            });
+        });
+
+        function noBorrar() {
+            document.getElementById("confirmar_delete").style.display = "none";
+        }
+
+        document.getElementById("deleteAcc").addEventListener("click", async function (event) {
+            document.getElementById("confirmar_delete").style.display = "block";
+        });
+    </script>
+    <script type="module" src="../controllers/global.js"></script>    
+    <script type="module" src="../controllers/pagina.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
